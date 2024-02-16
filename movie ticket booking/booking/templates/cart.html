@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+ 
+{% load static %}
+ 
+{% block start %}
+ 
+<style>
+ 
+</style>
+<div class="container card shadow-lg mt-5 ">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.No.</th>
+ 
+                <th scope="col">Cancel Ticket</th>
+ 
+                <th scope="col">Book </th>
+                <th scope="col">Movie Name</th>
+                <th scope="col">Watch</th>
+ 
+            </tr>
+        </thead>
+        <tbody>
+            {% for cartItems in carts.cart_items.all %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td><a href="{% url 'remove_cart' cartItems.uid %}" class="btn btn-danger"> Cancel Ticket</a>
+                </td>
+                <td> <img src="{{cartItems.images}}" style="height: 100px; width:100px;"></td>
+                <td>
+                    <h5>{{cartItems.movie.movie_name}}</h5>
+                </td>
+                <td><a href="" class="btn btn-warning">
+                         Pay Now</a>
+ 
+ 
+            </tr>
+            {% endfor %}
+            <tr>
+ 
+                <th scope="col"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+ 
+            </tr>
+ 
+        </tbody>
+    </table>
+</div>
+ 
+ 
+ 
+ 
+{% endblock %}
